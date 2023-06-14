@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:spotfree;NON_KEYWORDS=user
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+
+
+security:
+  key: 6A586E3272357538782F413F4428472B4B6150645367566B5970337336763979
