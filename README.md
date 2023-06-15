@@ -38,9 +38,6 @@ mvn wrapper:wrapper
 Para usar Spotfree, siga estas etapas:
 
 ```
-./mvnw clean install
-```
-```
 ./mvnw spring-boot:run
 ```
 
