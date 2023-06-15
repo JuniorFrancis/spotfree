@@ -120,8 +120,8 @@ public class User implements UserDetails {
             return this;
         }
 
-        public Builder withUsername(String email) {
-            this.username = email;
+        public Builder withUsername(String username) {
+            this.username = username;
             return this;
         }
 
@@ -141,7 +141,7 @@ public class User implements UserDetails {
         }
 
         public User build(){
-            return new User(firstname, username, password, status, role);
+            return new User(username, password, firstname, status, role);
         }
     }
 }
