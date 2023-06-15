@@ -9,6 +9,8 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [X] Implementação H2
 - [x] Autenticação
 - [X] Autorização
+- [X] CRUD Musics
+- [X] CRUD Lists
 - [ ] Handle Exception
 - [ ] Testes Unitários
 - [ ] Fluxo de troca de Senha
