@@ -3,7 +3,6 @@ package com.exame.spotfree.services;
 import com.exame.spotfree.models.User;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
     User create(User user);
