@@ -1,7 +1,10 @@
 package com.exame.spotfree.models;
 
 import com.exame.spotfree.constants.Kind;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Music {
@@ -31,6 +34,17 @@ public class Music {
 
     @Enumerated(EnumType.STRING)
     private Kind kind;
+
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "reproductionListMusics"
+    )
+    @JsonIgnore
+    List<ReproductionList> reproductionLists;
 
     public Long getId() {
         return id;
