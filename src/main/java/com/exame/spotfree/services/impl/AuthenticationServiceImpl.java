@@ -42,12 +42,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
+                        request.getUsername(),
                         request.getPassword()
                 )
         );
 
-        Optional<User> user = userRepository.findByUsername(request.getEmail());
+        Optional<User> user = userRepository.findByUsername(request.getUsername());
 
         String jwtToken = jwtService.generateToken(user.get());
 
@@ -63,6 +63,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                    .withFirstname(request.getFirstname())
                    .withUsername(request.getUsername())
                    .withPassword(encoder.encode(request.getPassword()))
+                   .withStatus(true)
                    .withRole(Role.COMMON)
                    .build();
 

@@ -53,7 +53,7 @@ public class RegisterRequest {
             this.firstname = firstname;
         }
 
-        public void withEmail(String email){
+        public void withUsername(String username){
             this.username = username;
         }
 
