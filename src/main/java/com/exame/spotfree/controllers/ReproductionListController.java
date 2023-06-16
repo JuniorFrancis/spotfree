@@ -1,8 +1,10 @@
 package com.exame.spotfree.controllers;
 
+import com.exame.spotfree.exceptions.DefaultException;
 import com.exame.spotfree.models.ReproductionList;
 import com.exame.spotfree.models.request.ReprodutionListRequest;
 import com.exame.spotfree.services.impl.ReproductionListServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

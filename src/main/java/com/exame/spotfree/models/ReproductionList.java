@@ -1,17 +1,16 @@
 package com.exame.spotfree.models;
 
 import jakarta.persistence.*;
-import org.springframework.lang.NonNull;
 
 import java.util.List;
 
 @Entity
 public class ReproductionList {
 
-    public ReproductionList(String name, String description, List<Music> reproductionListMusics) {
+    public ReproductionList(String name, String description, List<Music> musics) {
         this.name = name;
         this.description = description;
-        this.reproductionListMusics = reproductionListMusics;
+        this.musics = musics;
     }
 
     public ReproductionList() {
@@ -34,7 +33,7 @@ public class ReproductionList {
         name = "reproduction_list_music",
         joinColumns = @JoinColumn(name = "reproduction_list_id"),
         inverseJoinColumns = @JoinColumn(name = "music_id"))
-    List<Music> reproductionListMusics;
+    List<Music> musics;
 
     public Long getId() {
         return id;
@@ -60,12 +59,12 @@ public class ReproductionList {
         this.description = description;
     }
 
-    public List<Music> getReproductionListMusics() {
-        return reproductionListMusics;
+    public List<Music> getMusics() {
+        return musics;
     }
 
-    public void setReproductionListMusics(List<Music> reproductionListMusics) {
-        this.reproductionListMusics = reproductionListMusics;
+    public void setMusics(List<Music> musics) {
+        this.musics = musics;
     }
 
 
@@ -75,7 +74,7 @@ public class ReproductionList {
 
         public  String description;
 
-        public List<Music> reproductionListMusics;
+        public List<Music> musics;
 
         public ReproductionList.Builder withName(String name) {
             this.name = name;
@@ -87,13 +86,13 @@ public class ReproductionList {
             return this;
         }
 
-        public ReproductionList.Builder withMusics(List<Music> reproductionListMusics){
-            this.reproductionListMusics = reproductionListMusics;
+        public ReproductionList.Builder withMusics(List<Music> musics){
+            this.musics = musics;
             return this;
         }
 
         public ReproductionList build(){
-            return new ReproductionList(name, description, reproductionListMusics);
+            return new ReproductionList(name, description, musics);
         }
     }
 }

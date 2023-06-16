@@ -42,7 +42,7 @@ public class ReproductionListServiceImpl implements ReproductionListService {
     }
 
     @Override
-    public ReproductionList create(ReprodutionListRequest reproductionList) {
+    public ReproductionList create(ReprodutionListRequest reproductionList){
 
         List<Music> musics = new ArrayList<>();
 
