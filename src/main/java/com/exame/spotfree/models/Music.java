@@ -41,7 +41,7 @@ public class Music {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             },
-            mappedBy = "reproductionListMusics"
+            mappedBy = "musics"
     )
     @JsonIgnore
     List<ReproductionList> reproductionLists;

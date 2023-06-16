@@ -1,18 +1,19 @@
 package com.exame.spotfree.models.request;
 
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.lang.NonNull;
 
 import java.util.List;
 
 public class ReprodutionListRequest {
 
-    public ReprodutionListRequest(String name, String description, List<Integer> musicIds) {
+    public ReprodutionListRequest(@NonNull String name, String description, List<Integer> musicIds) {
         this.name = name;
         this.description = description;
         this.musicIds = musicIds;
     }
 
-    @NonNull
+    @NotBlank
     private String name;
 
     private String description;

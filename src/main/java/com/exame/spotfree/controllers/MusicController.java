@@ -1,9 +1,9 @@
 package com.exame.spotfree.controllers;
 
 import com.exame.spotfree.models.Music;
-import com.exame.spotfree.services.MusicService;
 import com.exame.spotfree.services.impl.MusicServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,11 +30,13 @@ public class MusicController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Music create(@RequestBody Music music){
         return musicService.create(music);
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id){
         musicService.delete(id);
     }
