@@ -35,6 +35,11 @@ public class MusicController {
         return musicService.create(music);
     }
 
+    @PutMapping("/{id}")
+    public Music update(@PathVariable String id, @RequestBody Music music) throws ClassNotFoundException {
+        return musicService.update(Long.valueOf(id), music);
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id){

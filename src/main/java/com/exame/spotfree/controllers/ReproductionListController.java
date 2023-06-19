@@ -1,10 +1,8 @@
 package com.exame.spotfree.controllers;
 
-import com.exame.spotfree.exceptions.DefaultException;
 import com.exame.spotfree.models.ReproductionList;
-import com.exame.spotfree.models.request.ReprodutionListRequest;
+import com.exame.spotfree.models.request.ReproductionListRequest;
 import com.exame.spotfree.services.impl.ReproductionListServiceImpl;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +26,7 @@ public class ReproductionListController {
     }
 
     @GetMapping("/{name}")
-    public ReproductionList getByName(@PathVariable String name){
+    public List<ReproductionList> getByName(@PathVariable String name){
         return reproductionListService.getByName(name);
     }
 
@@ -37,14 +35,19 @@ public class ReproductionListController {
         return reproductionListService.getOne(id);
     }
 
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ReproductionList create(@RequestBody ReprodutionListRequest reproductionList){
+    public ReproductionList create(@RequestBody ReproductionListRequest reproductionList){
         return reproductionListService.create(reproductionList);
     }
 
+    @PutMapping("/{id}")
+    public ReproductionList update(@PathVariable String id,@RequestBody ReproductionListRequest reproductionList)  {
+        return reproductionListService.update(Long.valueOf(id), reproductionList);
+    }
+
     @DeleteMapping("/id/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id){
         reproductionListService.delete(id);
     }

@@ -59,21 +59,28 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public AuthenticationResponse register(RegisterRequest request) {
-           User user = new User.Builder()
-                   .withFirstname(request.getFirstname())
-                   .withUsername(request.getUsername())
-                   .withPassword(encoder.encode(request.getPassword()))
-                   .withStatus(true)
-                   .withRole(Role.COMMON)
-                   .build();
 
-           userRepository.save(user);
+        boolean isAlreadyRegistered = userRepository.existsUserByUsername(request.getUsername());
 
-           String jwtToken = jwtService.generateToken(user);
+        if(isAlreadyRegistered) {
+            throw new RuntimeException("User already Exists");
+        }
 
-           return new AuthenticationResponse.Builder()
-                   .withToken(jwtToken)
-                   .build();
+        User user = new User.Builder()
+                .withUsername(request.getUsername())
+                .withPassword(encoder.encode(request.getPassword()))
+                .withStatus(true)
+                .withRole(Role.COMMON)
+                .build();
+
+        userRepository.save(user);
+
+        String jwtToken = jwtService.generateToken(user);
+
+        return new AuthenticationResponse.Builder()
+                .withToken(jwtToken)
+                .build();
+
 
     }
 }

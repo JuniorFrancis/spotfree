@@ -2,8 +2,7 @@ package com.exame.spotfree.models.request;
 
 public class RegisterRequest {
 
-    public RegisterRequest(String firstname,String username, String password) {
-        this.firstname = firstname;
+    public RegisterRequest(String username, String password) {
         this.username = username;
         this.password = password;
     }
@@ -11,19 +10,9 @@ public class RegisterRequest {
     public RegisterRequest() {
     }
 
-    private String firstname;
-
     private String username;
 
     private String password;
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
 
     public String getUsername() {
         return username;
@@ -43,15 +32,9 @@ public class RegisterRequest {
 
     public static class Builder {
 
-        public String firstname;
-
         public String username;
 
         public String password;
-
-        public void withFirstname(String firstname){
-            this.firstname = firstname;
-        }
 
         public void withUsername(String username){
             this.username = username;
@@ -62,7 +45,7 @@ public class RegisterRequest {
         }
 
         public RegisterRequest build() {
-            return new RegisterRequest(firstname, username, password);
+            return new RegisterRequest(username, password);
         }
 
     }

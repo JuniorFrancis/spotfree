@@ -13,4 +13,6 @@ public interface MusicService {
     Music create(Music music);
 
     void delete(Long id);
+
+    Music update(Long id, Music updatedMusic) throws ClassNotFoundException;
 }

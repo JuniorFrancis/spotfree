@@ -2,7 +2,7 @@ package com.exame.spotfree.services.impl;
 
 import com.exame.spotfree.models.Music;
 import com.exame.spotfree.models.ReproductionList;
-import com.exame.spotfree.models.request.ReprodutionListRequest;
+import com.exame.spotfree.models.request.ReproductionListRequest;
 import com.exame.spotfree.repositorys.MusicRepository;
 import com.exame.spotfree.repositorys.ReproductionListRepository;
 import com.exame.spotfree.services.ReproductionListService;
@@ -37,12 +37,12 @@ public class ReproductionListServiceImpl implements ReproductionListService {
     }
 
     @Override
-    public ReproductionList getByName(String name) {
-        return reproductionListRepository.findByName(name);
+    public List<ReproductionList> getByName(String name) {
+        return reproductionListRepository.findByNameContaining(name);
     }
 
     @Override
-    public ReproductionList create(ReprodutionListRequest reproductionList){
+    public ReproductionList create(ReproductionListRequest reproductionList) {
 
         List<Music> musics = new ArrayList<>();
 
@@ -71,5 +71,24 @@ public class ReproductionListServiceImpl implements ReproductionListService {
     public void deleteByName(String name) {
         ReproductionList reproductionList = reproductionListRepository.findByName(name);
         reproductionListRepository.delete(reproductionList);
+    }
+
+    @Override
+    public ReproductionList update(Long id, ReproductionListRequest updatedReproductionList)  {
+        ReproductionList reproductionList = reproductionListRepository.findById(id).orElseThrow();
+
+        List<Music> musics = new ArrayList<>();
+
+        updatedReproductionList.getMusicIds().forEach( music -> {
+            Optional<Music> currentMusic = musicRepository.findById(Long.valueOf(music));
+            musics.add(currentMusic.orElseThrow());
+        });
+
+        reproductionList.setDescription(updatedReproductionList.getDescription());
+        reproductionList.setName(updatedReproductionList.getDescription());
+        reproductionList.setMusics(musics);
+        reproductionList.setId(id);
+
+        return reproductionListRepository.save(reproductionList);
     }
 }

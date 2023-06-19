@@ -2,26 +2,11 @@
 
 <img src="cover-image.png" alt="exemplo imagem">
 
-### Ajustes e melhorias
-
-O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
-
-- [X] Implementação H2
-- [x] Autenticação
-- [X] Autorização
-- [X] CRUD Musics
-- [X] CRUD Lists
-- [ ] Handle Exception
-- [ ] Testes Unitários
-- [ ] Fluxo de troca de Senha
-- [ ] Desenvolvimento do Front
-- [ ] Script de inicialização do projeto
-
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 * Você instalou `Java 17`
-* Você instalou `Maven 3.8`
+* Você instalou `Maven`
 
 ## 🚀 Instalando Spotfree
 

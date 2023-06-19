@@ -1,11 +1,13 @@
 package com.exame.spotfree.constants;
 
-public enum Kind {
+public enum Genre {
 
     POP,
     FUNK,
     RAP,
     PAGODE,
     SAMBA,
-    CLASSIC
+    CLASSIC,
+    INDIE,
+    ROCK
 }

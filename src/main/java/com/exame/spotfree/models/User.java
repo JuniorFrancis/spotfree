@@ -12,10 +12,9 @@ import java.util.List;
 @Entity
 public class User implements UserDetails {
 
-    public User(String username, String password, String firstname, boolean status, Role role) {
+    public User(String username, String password, boolean status, Role role) {
         this.username = username;
         this.password = password;
-        this.firstname = firstname;
         this.status = status;
         this.role = role;
     }
@@ -30,8 +29,6 @@ public class User implements UserDetails {
     private String username;
 
     private String password;
-
-    private String firstname;
 
     private boolean status;
 
@@ -60,14 +57,6 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
     }
 
     public boolean isStatus() {
@@ -105,8 +94,6 @@ public class User implements UserDetails {
 
     public static class Builder {
 
-        public String firstname;
-
         public String username;
 
         public String password;
@@ -114,11 +101,6 @@ public class User implements UserDetails {
         public boolean status;
 
         public Role role;
-
-        public Builder withFirstname(String firstname) {
-            this.firstname = firstname;
-            return this;
-        }
 
         public Builder withUsername(String username) {
             this.username = username;
@@ -141,7 +123,7 @@ public class User implements UserDetails {
         }
 
         public User build(){
-            return new User(username, password, firstname, status, role);
+            return new User(username, password, status, role);
         }
     }
 }
