@@ -1,6 +1,6 @@
 package com.exame.spotfree.models;
 
-import com.exame.spotfree.constants.Kind;
+import com.exame.spotfree.constants.Genre;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -9,12 +9,12 @@ import java.util.List;
 @Entity
 public class Music {
 
-    public Music(String title, String artist, String album, int year, Kind kind) {
+    public Music(String title, String artist, String album, int year, Genre genre) {
         this.title = title;
         this.artist = artist;
         this.album = album;
         this.year = year;
-        this.kind = kind;
+        this.genre = genre;
     }
 
     public Music() {
@@ -33,7 +33,7 @@ public class Music {
     private int year;
 
     @Enumerated(EnumType.STRING)
-    private Kind kind;
+    private Genre genre;
 
     @ManyToMany(
             fetch = FetchType.LAZY,
@@ -86,12 +86,12 @@ public class Music {
         this.year = year;
     }
 
-    public Kind getKind() {
-        return kind;
+    public Genre getGenre() {
+        return genre;
     }
 
-    public void setKind(Kind kind) {
-        this.kind = kind;
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
     public static class Builder {
@@ -104,7 +104,7 @@ public class Music {
 
         public int year;
 
-        public Kind kind;
+        public Genre genre;
 
         public Music.Builder withTitle(String title) {
             this.title = title;
@@ -126,13 +126,13 @@ public class Music {
             return this;
         }
 
-        public Music.Builder withKind(Kind kind){
-            this.kind = kind;
+        public Music.Builder withGenre(Genre genre){
+            this.genre = genre;
             return this;
         }
 
         public Music build(){
-            return new Music(title, artist, album, year, kind);
+            return new Music(title, artist, album, year, genre);
         }
     }
 }

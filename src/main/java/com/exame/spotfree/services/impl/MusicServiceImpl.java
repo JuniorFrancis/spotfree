@@ -37,4 +37,14 @@ public class MusicServiceImpl implements MusicService {
         Music music = musicRepository.findById(id).orElseThrow();
         musicRepository.delete(music);
     }
+
+    @Override
+    public Music update(Long id, Music updatedMusic) throws ClassNotFoundException {
+        Music music = musicRepository.findById(id).orElseThrow();
+
+        updatedMusic.setId(music.getId());
+
+        return musicRepository.save(updatedMusic);
+
+    }
 }
