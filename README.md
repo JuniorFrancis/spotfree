@@ -1,12 +1,17 @@
-# Spotfree
-
+# 🎵 Spotfree 🎵 
+ 
 <img src="cover-image.png" alt="exemplo imagem">
+
+## 📃 Documentação
+
+Documentação ficará disponível após a subida da aplicação em <a href="http://localhost:8080/documentation"> Documentação </a>
 
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
-* Você instalou `Java 17`
-* Você instalou `Maven`
+* Você precisará de:  
+*  `Java 17` ☕ 
+*  `Maven`   🐦
 
 ## 🚀 Instalando Spotfree
 
@@ -20,7 +25,7 @@ mvn wrapper:wrapper
 ./mvnw clean install
 ```
 
-## ☕ Usando Spotfree
+## ▶️ Usando Spotfree
 
 Para usar Spotfree, siga estas etapas:
 
