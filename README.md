@@ -8,6 +8,8 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 * Você instalou `Java 17`
 * Você instalou `Maven`
 
+<strong>PS:</strong> O Font está em outro repositório: 
+<a href="https://github.com/JuniorFrancis/spotfree_front" > Repositório do Front </a>
 ## 🚀 Instalando Spotfree
 
 Para instalar o Spotfree, siga estas etapas:
