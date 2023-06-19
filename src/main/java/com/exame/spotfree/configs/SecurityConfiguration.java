@@ -38,9 +38,13 @@ public class SecurityConfiguration {
             .csrf()
             .disable()
             .authorizeHttpRequests()
-            .requestMatchers(new AntPathRequestMatcher("/api/v1/auth/**"))
-            .permitAll()
-            .requestMatchers(new AntPathRequestMatcher("/h2-console/**"))
+            .requestMatchers(
+                    new AntPathRequestMatcher("/api/v1/auth/**"),
+                    new AntPathRequestMatcher("/h2-console/**"),
+                    new AntPathRequestMatcher("/v3/**"),
+                    new AntPathRequestMatcher("/documentation"),
+                    new AntPathRequestMatcher("/swagger-ui/**")
+            )
             .permitAll()
             .anyRequest()
             .authenticated()
