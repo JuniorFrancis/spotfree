@@ -49,6 +49,8 @@ public class ReproductionListController {
     @DeleteMapping("/id/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id){
+
+
         reproductionListService.delete(id);
     }
 

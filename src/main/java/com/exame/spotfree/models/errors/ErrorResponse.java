@@ -1,33 +1,35 @@
 package com.exame.spotfree.models.errors;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ErrorResponse {
 
-    public ErrorResponse(HttpStatus responseStatus, String cause, LocalDate responseDate) {
-        this.responseStatus = responseStatus;
+    public ErrorResponse(HttpStatus responseStatusDescription, String cause, LocalDateTime responseDateTime, String calledMethod) {
+        this.responseStatusDescription = responseStatusDescription;
         this.cause = cause;
-        this.responseDate = responseDate;
+        this.responseDateTime = responseDateTime;
+        this.calledMethod = calledMethod;
     }
 
     public ErrorResponse() {
     }
 
-    private HttpStatus responseStatus;
+    private HttpStatus responseStatusDescription;
 
     private String cause;
 
-    private LocalDate responseDate;
+    private LocalDateTime responseDateTime;
 
-    public HttpStatus getResponseStatus() {
-        return responseStatus;
+    private String calledMethod;
+
+    public HttpStatus getResponseStatusDescription() {
+        return responseStatusDescription;
     }
 
-    public void setResponseStatus(HttpStatus responseStatus) {
-        this.responseStatus = responseStatus;
+    public void setResponseStatusDescription(HttpStatus responseStatusDescription) {
+        this.responseStatusDescription = responseStatusDescription;
     }
 
     public String getCause() {
@@ -38,24 +40,34 @@ public class ErrorResponse {
         this.cause = cause;
     }
 
-    public LocalDate getResponseDate() {
-        return responseDate;
+    public LocalDateTime getResponseDateTime() {
+        return responseDateTime;
     }
 
-    public void setResponseDate(LocalDate responseDate) {
-        this.responseDate = responseDate;
+    public void setResponseDateTime(LocalDateTime responseDateTime) {
+        this.responseDateTime = responseDateTime;
+    }
+
+    public String getCalledMethod() {
+        return calledMethod;
+    }
+
+    public void setCalledMethod(String calledMethod) {
+        this.calledMethod = calledMethod;
     }
 
     public static class Builder {
 
-        public HttpStatus responseStatus;
+        public HttpStatus responseStatusDescription;
 
         public String cause;
 
-        public LocalDate responseDate;
+        public LocalDateTime responseDateTime;
 
-        public ErrorResponse.Builder withResponseStatus(HttpStatus responseStatus) {
-            this.responseStatus = responseStatus;
+        public String calledMethod;
+
+        public ErrorResponse.Builder withResponseStatus(HttpStatus responseStatusDescription) {
+            this.responseStatusDescription = responseStatusDescription;
             return this;
         }
 
@@ -64,13 +76,18 @@ public class ErrorResponse {
             return this;
         }
 
-        public ErrorResponse.Builder withResponseDate(LocalDate responseDate){
-            this.responseDate = responseDate;
+        public ErrorResponse.Builder withResponseDate(LocalDateTime responseDateTime){
+            this.responseDateTime = responseDateTime;
+            return this;
+        }
+
+        public ErrorResponse.Builder withCalledMethod(String calledMethod){
+            this.calledMethod = calledMethod;
             return this;
         }
 
         public ErrorResponse build(){
-            return new ErrorResponse(responseStatus, cause, responseDate);
+            return new ErrorResponse(responseStatusDescription, cause, responseDateTime, calledMethod);
         }
     }
 }
