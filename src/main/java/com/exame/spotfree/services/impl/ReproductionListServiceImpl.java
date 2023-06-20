@@ -9,6 +9,8 @@ import com.exame.spotfree.services.ReproductionListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.exame.spotfree.validators.Validators.isEmptyList;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +40,9 @@ public class ReproductionListServiceImpl implements ReproductionListService {
 
     @Override
     public List<ReproductionList> getByName(String name) {
-        return reproductionListRepository.findByNameContaining(name);
+        List<ReproductionList> reproductionLists = reproductionListRepository.findByNameContaining(name);
+        isEmptyList("No one reproduction list found" , reproductionLists);
+        return reproductionLists;
     }
 
     @Override
