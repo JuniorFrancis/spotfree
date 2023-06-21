@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class MusicServiceImpl implements MusicService {
@@ -34,13 +35,13 @@ public class MusicServiceImpl implements MusicService {
 
     @Override
     public void delete(Long id) {
-        Music music = musicRepository.findById(id).orElseThrow();
+        Music music = musicRepository.findById(id).orElseThrow(NoSuchElementException::new);
         musicRepository.delete(music);
     }
 
     @Override
-    public Music update(Long id, Music updatedMusic) throws ClassNotFoundException {
-        Music music = musicRepository.findById(id).orElseThrow();
+    public Music update(Long id, Music updatedMusic) {
+        Music music = musicRepository.findById(id).orElseThrow(NoSuchElementException::new);
 
         updatedMusic.setId(music.getId());
 
