@@ -13,6 +13,7 @@ import static com.exame.spotfree.validators.Validators.isEmptyList;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -73,7 +74,7 @@ public class ReproductionListServiceImpl implements ReproductionListService {
 
     @Override
     public void deleteByName(String name) {
-        ReproductionList reproductionList = reproductionListRepository.findByName(name);
+        ReproductionList reproductionList = reproductionListRepository.findByName(name).orElseThrow(NoSuchElementException::new);
         reproductionListRepository.delete(reproductionList);
     }
 
