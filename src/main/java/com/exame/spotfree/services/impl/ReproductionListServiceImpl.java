@@ -53,7 +53,7 @@ public class ReproductionListServiceImpl implements ReproductionListService {
 
         reproductionList.getMusicIds().forEach( music -> {
             Optional<Music> currentMusic = musicRepository.findById(Long.valueOf(music));
-            musics.add(currentMusic.orElseThrow());
+            musics.add(currentMusic.orElseThrow(NoSuchElementException::new));
         });
 
         return reproductionListRepository.save(
@@ -86,7 +86,7 @@ public class ReproductionListServiceImpl implements ReproductionListService {
 
         updatedReproductionList.getMusicIds().forEach( music -> {
             Optional<Music> currentMusic = musicRepository.findById(Long.valueOf(music));
-            musics.add(currentMusic.orElseThrow());
+            musics.add(currentMusic.orElseThrow(NoSuchElementException::new));
         });
 
         reproductionList.setDescription(updatedReproductionList.getDescription());
